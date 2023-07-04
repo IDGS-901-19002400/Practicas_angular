@@ -1,0 +1,39 @@
+  
+<div class="card">
+
+    <div class="card-header text-center">
+        <h2>FORMULARIO</h2>
+        </div>
+        <div class="card-body text-center">
+            <div class="row">   
+                <mat-form-field>
+                    <mat-label>Banda 1:</mat-label>
+                    <mat-select [(ngModel)]="valorBanda1">
+                      <mat-option *ngFor="let banda of coloresBanda1" [value]="banda.valor">{{ banda.color }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <mat-form-field>
+                    <mat-label>Banda 2:</mat-label>
+                    <mat-select [(ngModel)]="valorBanda2">
+                      <mat-option *ngFor="let banda of coloresBanda2" [value]="banda.valor">{{ banda.color }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <mat-form-field>
+                    <mat-label>Banda 3 (Multiplicador):</mat-label>
+                    <mat-select [(ngModel)]="valorBanda3">
+                      <mat-option *ngFor="let banda of coloresBanda3" [value]="banda.valor">{{ banda.color }}</mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                  
+                  <mat-label>(Tolerancia):</mat-label>
+
+                    <mat-radio-group [(ngModel)]="valorBanda4" aria-label="Tolerancia">
+                        <mat-radio-button *ngFor="let banda of coloresBanda4" [value]="banda.valor">{{ banda.color }}</mat-radio-button>
+                    </mat-radio-group>
+                 
+                  
+                  <button mat-raised-button color="primary" (click)="calcularValores()">Calcular</button>
+        </div>
+        </div>

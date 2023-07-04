@@ -1,0 +1,24 @@
+<div class="card mb-5" >
+  
+    <table class="table table-bordered table-striped table-hover">
+        <thead>
+          <tr>
+            <th>banda 1</th>
+            <th>Banda 2</th>
+            <th>Multiplicador</th>
+            <th>Tolerancia</th>
+            </tr>
+        </thead>
+        <tbody>
+                <td *ngFor="let banda of valores.bandas" [ngStyle]="{'background-color' : banda.color, 'color': 
+                banda.color == 'white' ? 'black' : 'white'}">{{ banda.color }}</td>
+                <tr>
+                    <td> <b>Valor: </b>{{ valores.valor }}</td>
+                    <td> <b>Valor Minimo: </b>{{ valores.minimo }}</td>
+                    <td><b> Valor Maximo:</b> {{ valores.maximo }}</td>
+                </tr>
+        </tbody>
+    
+        </table>
+    
+    </div>

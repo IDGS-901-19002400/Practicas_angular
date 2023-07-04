@@ -1,0 +1,155 @@
+<!-- Hazme un formulario con bootstrap-->
+<div class="container">
+<div class="row">
+    <div class="col-sm-12 mt-4">
+        <form (ngSubmit)="onSubmit()" [formGroup]="pizzaForm">
+            <h1>Orden Pizza</h1>
+            <br>
+            <div class="row">
+
+                <div class="col-sm-3">
+                    <label>Nombre:</label>
+                    <input type="text" class="form-control" formControlName="nombre" name="nombre">
+                    <div *ngIf="pizzaForm.get('nombre')?.touched && 
+                 pizzaForm.get('nombre')?.errors?.['required']" class="alert alert-danger">
+                        El nombre es requerido
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label>Dirección:</label>
+                    <input type="text" class="form-control" formControlName="direccion" name="direccion">
+                    <div *ngIf="pizzaForm.get('direccion')?.touched && 
+                pizzaForm.get('direccion')?.errors?.['required']" class="alert alert-danger">
+                        El nombre es requerido
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <label>Teléfono:</label>
+                    <input type="text" class="form-control" formControlName="telefono" name="telefono">
+                    <div *ngIf="pizzaForm.get('telefono')?.touched && 
+                pizzaForm.get('telefono')?.errors?.['required']" class="alert alert-danger">
+                        El nombre es requerido
+                    </div>
+                </div>
+
+            <div class="col-sm-4 mt-4">
+                <label>Tamaño:</label>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="tamano" id="tamano" value="40" >Chica
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="tamano" id="tamano" value="80">Mediana
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="tamano" id="tamano" value="120">Grande
+                </div>
+            </div>
+            <br>
+            <div class=" col-sm-4 mt-4">
+                <label>Ingredientes:</label>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="10" id="flexCheckDefault" formControlName="ingr1">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Jamon $10
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="10" id="flexCheckDefault"  formControlName="ingr2">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Piña $10
+                    </label>
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="10" id="flexCheckDefault" formControlName="ingr3">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Champiñones $10
+                    </label>
+                </div>
+            </div>
+                <div class="col-sm-3 mt-4">
+                    <label>cantidadPizza:</label>
+                    <input type="number" class="form-control" formControlName="cantidadPizza" name="cantidadPizza">
+                    <div *ngIf="pizzaForm.get('nombre')?.touched && 
+                 pizzaForm.get('cantidadPizza')?.errors?.['required']" class="alert alert-danger">
+                        El cantidadPizza es requerido
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary mt-4">Agregar</button>
+        </div>
+        </div>
+
+        </form>
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Tamaño</th>
+                    <th scope="col">Ingredientes</th>
+                    <th scope="col">Cantidad</th>
+                    <th scope="col">Precio</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pizza of arregloPizza ; let i = index">
+                    <td>{{pizza.tamano}}</td>
+                    <td>{{pizza.ingredientes}}</td>
+                    <td>{{pizza.cantidad}}</td>
+                    <td>{{pizza.precio}}</td>
+                    <td><button class="btn btn-danger" (click)="eliminarPizza(i)">Eliminar</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+
+        <div class="col-sm-12">
+            <button type="submit" class="btn btn-primary mt-4" (click)="terminarOrden()">Terminar Orden</button>
+
+        </div>
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Dirección</th>
+                    <th scope="col">Teléfono</th>
+                    <th scope="col">Total Orden</th>
+                    <th scope="col">Fecha</th>
+              
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let pedido of arregloPedidos ; let i = index">
+                    <td>{{pedido.nombre}}</td>
+                    <td>{{pedido.direccion}}</td>
+                    <td>{{pedido.telefono}}</td>
+                    <td>{{pedido.totalOrden}}</td>
+                    <td>{{pedido.Fecha}}</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr >
+                    <td colspan="3">Total</td>
+
+                    <td>{{calcularTotal()}}</td>
+
+                </tr>
+            </tfoot>
+
+        </table>
+
+
+
+
+
+    </div>
+</div>
