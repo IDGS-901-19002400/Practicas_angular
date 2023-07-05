@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 mt-4">
+        <form (ngSubmit)="onSubmit()" [formGroup]="cineForm">
+            <h1>Cinepolis</h1>
+            <div class="col-sm-3">
+                <label>Nombre:</label>
+                <input type="text" class="form-control" formControlName="nombre" name="nombre">
+                <div *ngIf="cineForm.get('nombre')?.touched && 
+                cineForm.get('nombre')?.errors?.['required']" class="alert alert-danger">
+                    El nombre es requerido
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Cantidad de compradores:</label>
+                <input type="number" class="form-control" formControlName="cantClientes" name="cantClientes">
+                <div *ngIf="cineForm.get('cantClientes')?.touched && 
+                cineForm.get('cantClientes')?.errors?.['required']" class="alert alert-danger">
+                    El numero es requerido
+                </div>
+            </div>
+            <div class="col-sm-3 mt-4">
+                <label>Tarjeta:</label>
+                <br>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="tarjeta" id="tarjeta" value="si">Si
+                </div>
+                <div class="form-check">
+                    <input class="form-check-input" type="radio" formControlName="tarjeta" id="tarjeta" value="no">No
+                </div>
+                <div class="mt-4">
+                    <label>Cantidad de boletos:</label>
+                    <input type="number" class="form-control" formControlName="cantBoletos" name="cantBoletos">
+                    <div *ngIf="cineForm.get('cantBoletos')?.touched && 
+                        cineForm.get('cantBoletos')?.errors?.['required']" class="alert alert-danger">
+                        El numero es requerido
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary mt-4">Guardar</button>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 mt-4">
+                    <label>Valor a pagar:</label>
+                    <input type="text" readonly class="form-control" formControlName="total" name="total">
+                </div>
+            </div>
+        </form>
+        <table class=" table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col"> Nombre</th>
+                    <th scope="col">Cantidad de compradores</th>
+                    <th scope="col">Cantidad de boletos</th>
+                    <th scope="col">Valor a pagar</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cine of arregloCine ; let i = index">
+                    <td>{{cine.nombre}}</td>
+                    <td>{{cine.cantClientes}}</td>
+                    <td>{{cine.cantBoletos}}</td>
+                    <td>{{cine.total}}</td>
+                </tr>
+            </tbody>
+        
+        </table>
+        </div>
+    </div>
+</div>

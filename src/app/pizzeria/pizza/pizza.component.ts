@@ -67,8 +67,6 @@ export class PizzaComponent {
 
     totalprice= totalprice * this.pizzaForm.get('cantidadPizza')?.value;
 
-    //
-
     //tamaño, ingredientes, cantidad, precio
     
     let pizza = {
@@ -82,12 +80,6 @@ export class PizzaComponent {
     this.arregloPizza.push(pizza);
 
     console.log(pizza);
-      
-  
-
-
-
-
 
   }
 

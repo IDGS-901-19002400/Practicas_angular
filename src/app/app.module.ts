@@ -9,6 +9,7 @@ import { ResistenciasModule } from './resistance/resistance.module';
 import { PizzModule } from './pizz/pizz.module';
 import { MenuComponent } from './menu/menu.component';
 import { AppRoutingModule } from './app.routing.module';
+import { CineModule } from './cinepolis/cinepolis.module';
 
 
 
@@ -26,7 +27,8 @@ import { AppRoutingModule } from './app.routing.module';
     PizzModule,
     ResistenciasModule,
     AppRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    CineModule
 
   
   ],
